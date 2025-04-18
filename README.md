@@ -54,10 +54,11 @@ CryptoEdu is an interactive web application designed to teach and demonstrate cl
 2. Install dependencies:
    ```bash
    npm install
+   npm install --legacy-peer-deps
 
 3. Run the development server:
    ```bash
-   nnpm run dev
+   npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
