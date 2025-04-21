@@ -75,30 +75,35 @@ Using Virtual machine, set its adapter 1 setting to bridged adapter then follow 
 ```bash
 npm install -g pm2
 
-3. Clone and Set Up the App"
-   cd ~
+3. Clone and Set Up the App:
+```bash
+cd ~
 git clone https://github.com/yourusername/cryptoedu.git
 cd cryptoedu
 npm install --legacy-peer-deps
 
 4. Since the app uses Next.js, so for production:
-   npm run build
+```bash
+npm run build
 
 5. To start the app in :
+```bash
    npm start
    
 7.Use PM2 to Keep It Running:(keeps the app alive)
+```bash
 pm2 start npm --name "cryptoedu" -- run start
 pm2 save
 pm2 startup
 
 8.Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
 9. Check status if it is set active:
+```bash
 pm2 status
 
 10.Configure Nginx as a Reverse Proxy
--Remove default page: sudo rm /etc/nginx/sites-enabled/default
--Reveal your VM ip : ip a (usually like 192.X.X.X)
+-Remove default page: ```bash sudo rm /etc/nginx/sites-enabled/default
+-Reveal your VM ip : ```bash ip a (usually like 192.X.X.X)
 -Create a new Nginx config to your VM: sudo nano /etc/nginx/sites-available/cryptoedu
 -Paste this in the config: 
 server {
