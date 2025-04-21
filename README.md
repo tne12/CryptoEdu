@@ -109,7 +109,9 @@ Open a terminal in your VM and run the following commands:
 -Remove default page: ```bash   sudo rm /etc/nginx/sites-enabled/default
 
 -Reveal your VM ip : ```bash    ip a (usually like 192.X.X.X)
+
 -Create a new Nginx config to your VM: ```bash   sudo nano /etc/nginx/sites-available/cryptoedu
+
 -Paste this in the config: 
 server {
     listen 80;
@@ -123,7 +125,9 @@ server {
         proxy_cache_bypass $http_upgrade;}}
     
 -Enable the config: sudo ln -s /etc/nginx/sites-available/cryptoedu /etc/nginx/sites-enabled/
+
 -Test config: sudo nginx -t
+
 -Reload Nginx: sudo systemctl reload nginx
 
 10. Access the App:
