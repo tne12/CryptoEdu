@@ -85,11 +85,10 @@ Open a terminal in your VM and run the following commands:
    npm install --legacy-peer-deps
 
 4. Since the app uses Next.js, so for production:
-  ```bash
+   ```bash
   npm run build
-
-5. To start the app:
-  ```bash
+5. Start the app: 
+    ```bash
   npm start
    
 6. Use PM2 to Keep It Running:(keeps the app alive)
