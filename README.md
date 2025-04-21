@@ -92,18 +92,18 @@ npm run build
 ```bash
    npm start
    
-7. Use PM2 to Keep It Running:(keeps the app alive)
+6. Use PM2 to Keep It Running:(keeps the app alive)
 ```bash
 pm2 start npm --name "cryptoedu" -- run start
 pm2 save
 pm2 startup
 
-8. Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
-9. Check status:
+7. Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
+8. Check status:
 ```bash
 pm2 status
 
-10. Configure Nginx as a Reverse Proxy
+9. Configure Nginx as a Reverse Proxy
 -Remove default page: ```bash sudo rm /etc/nginx/sites-enabled/default
 -Reveal your VM ip : ```bash ip a (usually like 192.X.X.X)
 -Create a new Nginx config to your VM: sudo nano /etc/nginx/sites-available/cryptoedu
@@ -111,7 +111,6 @@ pm2 status
 server {
     listen 80;
     server_name 192.168.0.132;  # your VM's IP
-
     location / {
         proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
@@ -124,7 +123,7 @@ server {
 -Test config: sudo nginx -t
 -Reload Nginx: sudo systemctl reload nginx
 
-11. Access the App:
+10. Access the App:
 Open your browser
 Go to:
 http://localhost (from inside the VM)
