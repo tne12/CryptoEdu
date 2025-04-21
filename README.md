@@ -98,7 +98,8 @@ pm2 start npm --name "cryptoedu" -- run start
 pm2 save
 pm2 startup
 
-7. Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
+7. Follow the output it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
+
 
 8. Check status:
   ```bash
@@ -129,7 +130,6 @@ Open your browser
 Go to:
 http://localhost (from inside the VM)
 http://your-vm-ip  (from host machine or network)
-
 
 
 
