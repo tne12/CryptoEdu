@@ -67,10 +67,12 @@ CryptoEdu is an interactive web application designed to teach and demonstrate cl
 ## Deployment
 Using Virtual machine, set its adapter 1 setting to bridged adapter then follow the steps scripting in the terminal bellow:
 1. Prepare your VM with needed libraries:
+   ```bash
    sudo apt update
    sudo apt install nodejs npm nginx sqlite3 git curl -y
 
 2.Install pm2 globally:
+```bash
 npm install -g pm2
 
 3. Clone and Set Up the App"
