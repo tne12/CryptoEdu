@@ -107,8 +107,9 @@ Open a terminal in your VM and run the following commands:
 
 9. Configure Nginx as a Reverse Proxy
 -Remove default page: ```bash   sudo rm /etc/nginx/sites-enabled/default
--Reveal your VM ip : ```bash ip a (usually like 192.X.X.X)
--Create a new Nginx config to your VM: sudo nano /etc/nginx/sites-available/cryptoedu
+
+-Reveal your VM ip : ```bash    ip a (usually like 192.X.X.X)
+-Create a new Nginx config to your VM: ```bash   sudo nano /etc/nginx/sites-available/cryptoedu
 -Paste this in the config: 
 server {
     listen 80;
