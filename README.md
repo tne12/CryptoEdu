@@ -65,121 +65,12 @@ CryptoEdu is an interactive web application designed to teach and demonstrate cl
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Deployment
-🚀 Deployment Guide
 This project runs on a Virtual Machine. Follow the steps below to deploy the app successfully.
 
-🔧 1. VM Network Configuration
 Set your VM's Adapter 1 to: Bridged Adapter
 This allows your VM to be accessible on the same network.
-
-📦 2. Install Dependencies
 Open a terminal in your VM and run the following commands:
-
-bash
-Copy
-Edit
-sudo apt update
-sudo apt install nodejs npm nginx sqlite3 git curl -y
-🛠 3. Install PM2 (Process Manager)
-bash
-Copy
-Edit
-npm install -g pm2
-📁 4. Clone and Set Up the App
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/cryptoedu.git
-cd cryptoedu
-npm install --legacy-peer-deps
-⚙️ 5. Build the App for Production (Next.js)
-bash
-Copy
-Edit
-npm run build
-▶️ 6. Start the App
-bash
-Copy
-Edit
-npm start
-🔄 7. Keep the App Running with PM2
-bash
-Copy
-Edit
-pm2 start npm --name "cryptoedu" -- run start
-pm2 save
-pm2 startup
-After running pm2 startup, follow the command it outputs (e.g.):
-
-bash
-Copy
-Edit
-sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u your-user-name --hp /home/your-user-name
-📈 8. Check PM2 Status
-bash
-Copy
-Edit
-pm2 status
-🌐 9. Configure Nginx as a Reverse Proxy
-Remove default Nginx config:
-bash
-Copy
-Edit
-sudo rm /etc/nginx/sites-enabled/default
-Check your VM IP:
-bash
-Copy
-Edit
-ip a
-Look for something like 192.168.x.x under your bridged adapter.
-
-Create a new Nginx config:
-bash
-Copy
-Edit
-sudo nano /etc/nginx/sites-available/cryptoedu
-Paste the following config (replace 192.168.0.132 with your actual VM IP):
-
-nginx
-Copy
-Edit
-server {
-    listen 80;
-    server_name 192.168.0.132;
-
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-Enable the config and restart Nginx:
-bash
-Copy
-Edit
-sudo ln -s /etc/nginx/sites-available/cryptoedu /etc/nginx/sites-enabled/
-sudo nginx -t
-sudo systemctl reload nginx
-🌍 10. Access the App
-From inside the VM:
-
-arduino
-Copy
-Edit
-http://localhost
-From host machine or another device on the network:
-
-perl
-Copy
-Edit
-http://<your-vm-ip>  # e.g., http://192.168.0.132
-
-
-Using Virtual machine, set its adapter 1 setting to bridged adapter then follow the steps scripting in the terminal bellow:
-1. Prepare your VM with needed libraries:
+1. Install Dependencies in your VM:
    ```bash
    sudo apt update
    sudo apt install nodejs npm nginx sqlite3 git curl -y
@@ -201,18 +92,18 @@ npm run build
 ```bash
    npm start
    
-7.Use PM2 to Keep It Running:(keeps the app alive)
+7. Use PM2 to Keep It Running:(keeps the app alive)
 ```bash
 pm2 start npm --name "cryptoedu" -- run start
 pm2 save
 pm2 startup
 
-8.Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
+8. Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
 9. Check status:
 ```bash
 pm2 status
 
-10.Configure Nginx as a Reverse Proxy
+10. Configure Nginx as a Reverse Proxy
 -Remove default page: ```bash sudo rm /etc/nginx/sites-enabled/default
 -Reveal your VM ip : ```bash ip a (usually like 192.X.X.X)
 -Create a new Nginx config to your VM: sudo nano /etc/nginx/sites-available/cryptoedu
