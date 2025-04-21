@@ -76,11 +76,11 @@ Using Virtual machine, set its adapter 1 setting to bridged adapter then follow 
    npm install -g pm2
 
 3. Clone and Set Up the App:
-```bash
-cd ~
-git clone https://github.com/yourusername/cryptoedu.git
-cd cryptoedu
-npm install --legacy-peer-deps
+   ```bash
+   cd ~
+   git clone https://github.com/yourusername/cryptoedu.git
+   cd cryptoedu
+   npm install --legacy-peer-deps
 
 4. Since the app uses Next.js, so for production:
 ```bash
