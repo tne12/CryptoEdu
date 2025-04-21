@@ -106,11 +106,13 @@ Open a terminal in your VM and run the following commands:
     pm2 status
 
 9. Configure Nginx as a Reverse Proxy
-  -Remove default page: ```bash   sudo rm /etc/nginx/sites-enabled/default
-
-  -Reveal your VM ip :
+  -Remove default page:
     ```bash
-    ip a (usually like 192.X.X.X)
+    sudo rm /etc/nginx/sites-enabled/default
+
+  -Reveal your VM ip:
+      ```bash
+      ip a (usually like 192.X.X.X)
 
   -Create a new Nginx config to your VM: ```bash   sudo nano /etc/nginx/sites-available/cryptoedu
 
