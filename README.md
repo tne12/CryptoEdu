@@ -86,10 +86,11 @@ Open a terminal in your VM and run the following commands:
 
 4. Since the app uses Next.js, so for production:
    ```bash
-  npm run build
+   npm run build
+  
 5. Start the app: 
     ```bash
-  npm start
+    npm start
    
 6. Use PM2 to Keep It Running:(keeps the app alive)
 ```bash
