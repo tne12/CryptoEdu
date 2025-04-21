@@ -102,8 +102,8 @@ Open a terminal in your VM and run the following commands:
 
 
 8. Check status:
-  ```bash
-  pm2 status
+    ```bash
+    pm2 status
 
 9. Configure Nginx as a Reverse Proxy
 -Remove default page: ```bash   sudo rm /etc/nginx/sites-enabled/default
