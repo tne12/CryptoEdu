@@ -99,12 +99,13 @@ pm2 save
 pm2 startup
 
 7. Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
+
 8. Check status:
-```bash
-pm2 status
+  ```bash
+  pm2 status
 
 9. Configure Nginx as a Reverse Proxy
--Remove default page: ```bash sudo rm /etc/nginx/sites-enabled/default
+-Remove default page: ```bash   sudo rm /etc/nginx/sites-enabled/default
 -Reveal your VM ip : ```bash ip a (usually like 192.X.X.X)
 -Create a new Nginx config to your VM: sudo nano /etc/nginx/sites-available/cryptoedu
 -Paste this in the config: 
