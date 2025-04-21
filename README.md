@@ -65,6 +65,7 @@ CryptoEdu is an interactive web application designed to teach and demonstrate cl
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Deployment
+
 Using Virtual machine, set its adapter 1 setting to bridged adapter then follow the steps scripting in the terminal bellow:
 1. Prepare your VM with needed libraries:
    ```bash
@@ -74,7 +75,6 @@ Using Virtual machine, set its adapter 1 setting to bridged adapter then follow 
 2.Install pm2 globally:
    ```bash
    npm install -g pm2
-
 3. Clone and Set Up the App:
    ```bash
    cd ~
@@ -116,9 +116,8 @@ server {
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
+        proxy_cache_bypass $http_upgrade;}}
+    
 -Enable the config: sudo ln -s /etc/nginx/sites-available/cryptoedu /etc/nginx/sites-enabled/
 -Test config: sudo nginx -t
 -Reload Nginx: sudo systemctl reload nginx
@@ -128,8 +127,6 @@ Open your browser
 Go to:
 http://localhost (from inside the VM)
 http://your-vm-ip  (from host machine or network)
-
-
 
 
 
