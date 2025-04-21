@@ -35,6 +35,8 @@ CryptoEdu is an interactive web application designed to teach and demonstrate cl
   - TypeScript
   - Tailwind CSS
   - shadcn/ui component library
+  - Nginx (web server and proxy)
+  - PM2 (production process manager for Node.js applications)
 
 - **State Management:**
   - React Hooks (useState, useEffect)
@@ -61,6 +63,69 @@ CryptoEdu is an interactive web application designed to teach and demonstrate cl
    npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+## Deployment
+Using Virtual machine, set its adapter 1 setting to bridged adapter then follow the steps scripting in the terminal bellow:
+1. Prepare your VM with needed libraries:
+   sudo apt update
+   sudo apt install nodejs npm nginx sqlite3 git curl -y
+
+2.Install pm2 globally:
+npm install -g pm2
+
+3. Clone and Set Up the App"
+   cd ~
+git clone https://github.com/yourusername/cryptoedu.git
+cd cryptoedu
+npm install --legacy-peer-deps
+
+4. Since the app uses Next.js, so for production:
+   npm run build
+
+5. To start the app in :
+   npm start
+   
+7.Use PM2 to Keep It Running:(keeps the app alive)
+pm2 start npm --name "cryptoedu" -- run start
+pm2 save
+pm2 startup
+
+8.Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
+9. Check status if it is set active:
+pm2 status
+
+10.Configure Nginx as a Reverse Proxy
+-Remove default page: sudo rm /etc/nginx/sites-enabled/default
+-Reveal your VM ip : ip a (usually like 192.X.X.X)
+-Create a new Nginx config to your VM: sudo nano /etc/nginx/sites-available/cryptoedu
+-Paste this in the config: 
+server {
+    listen 80;
+    server_name 192.168.0.132;  # your VM's IP
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+-Enable the config: sudo ln -s /etc/nginx/sites-available/cryptoedu /etc/nginx/sites-enabled/
+-Test config: sudo nginx -t
+-Reload Nginx: sudo systemctl reload nginx
+
+11. Access the App:
+Open your browser
+Go to:
+http://localhost (from inside the VM)
+http://your-vm-ip  (from host machine or network)
+
+
+
+
+
 
 ## Acknowledgments
 
