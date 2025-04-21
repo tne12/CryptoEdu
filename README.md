@@ -72,8 +72,8 @@ Using Virtual machine, set its adapter 1 setting to bridged adapter then follow 
    sudo apt install nodejs npm nginx sqlite3 git curl -y
 
 2.Install pm2 globally:
-```bash
-npm install -g pm2
+   ```bash
+   npm install -g pm2
 
 3. Clone and Set Up the App:
 ```bash
