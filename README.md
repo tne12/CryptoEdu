@@ -77,7 +77,6 @@ Using Virtual machine, set its adapter 1 setting to bridged adapter then follow 
    npm install -g pm2
 3. Clone and Set Up the App:
    ```bash
-   cd ~
    git clone https://github.com/yourusername/cryptoedu.git
    cd cryptoedu
    npm install --legacy-peer-deps
@@ -86,7 +85,7 @@ Using Virtual machine, set its adapter 1 setting to bridged adapter then follow 
 ```bash
 npm run build
 
-5. To start the app in :
+5. To start the app:
 ```bash
    npm start
    
@@ -97,7 +96,7 @@ pm2 save
 pm2 startup
 
 8.Follow the command it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
-9. Check status if it is set active:
+9. Check status:
 ```bash
 pm2 status
 
