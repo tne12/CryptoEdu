@@ -93,10 +93,10 @@ Open a terminal in your VM and run the following commands:
     npm start
    
 6. Use PM2 to Keep It Running:(keeps the app alive)
-```bash
-pm2 start npm --name "cryptoedu" -- run start
-pm2 save
-pm2 startup
+    ```bash
+    pm2 start npm --name "cryptoedu" -- run start
+    pm2 save
+    pm2 startup
 
 7. Follow the output it prints after step 7 (usually sudo env PATH=... pm2 startup systemd -u your-user-name).
 
