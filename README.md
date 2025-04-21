@@ -106,29 +106,31 @@ Open a terminal in your VM and run the following commands:
     pm2 status
 
 9. Configure Nginx as a Reverse Proxy
--Remove default page: ```bash   sudo rm /etc/nginx/sites-enabled/default
+  -Remove default page: ```bash   sudo rm /etc/nginx/sites-enabled/default
 
--Reveal your VM ip : ```bash    ip a (usually like 192.X.X.X)
+  -Reveal your VM ip :
+    ```bash
+    ip a (usually like 192.X.X.X)
 
--Create a new Nginx config to your VM: ```bash   sudo nano /etc/nginx/sites-available/cryptoedu
+  -Create a new Nginx config to your VM: ```bash   sudo nano /etc/nginx/sites-available/cryptoedu
 
--Paste this in the config: 
-server {
-    listen 80;
-    server_name 192.168.0.132;  # your VM's IP
-    location / {
-        proxy_pass http://localhost:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;}}
-    
--Enable the config: sudo ln -s /etc/nginx/sites-available/cryptoedu /etc/nginx/sites-enabled/
-
--Test config: sudo nginx -t
-
--Reload Nginx: sudo systemctl reload nginx
+  -Paste this in the config: 
+  server {
+      listen 80;
+      server_name 192.168.0.132;  # your VM's IP
+      location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection 'upgrade';
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;}}
+      
+  -Enable the config: sudo ln -s /etc/nginx/sites-available/cryptoedu /etc/nginx/sites-enabled/
+  
+  -Test config: sudo nginx -t
+  
+  -Reload Nginx: sudo systemctl reload nginx
 
 10. Access the App:
 Open your browser
